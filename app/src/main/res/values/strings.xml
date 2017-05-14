@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">WeiQuan</string>
+    <string name="app_name">微服</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="message_list_view_image_description">消息图片预览</string>
 </resources>

@@ -1,53 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0dp"
+    android:layout_marginStart="0dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginEnd="0dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/img_message_list"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:visibility="gone"
+        android:contentDescription="@string/message_list_view_image_description"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_message_list_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="5px"
-        android:orientation="vertical">
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@id/img_message_list"
+        android:layout_toStartOf="@id/img_message_list">
 
         <TextView
             android:id="@+id/tv_message_list_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="内容内容"
-            android:textColor="#000"
-            android:textSize="62px" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textColor="#b5000000"
+            android:textSize="16sp"
+            android:ellipsize="none"
+            android:maxLines="3"
+            android:maxLength="100"
+            android:scrollHorizontally="false"/>
+    </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_message_list_creator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textSize="13px" />
-
-            <TextView
-                android:id="@+id/tv_message_list_publish_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:textColor="#000"
-                android:text="10:10:10"
-                android:textSize="13px" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/img_message_list"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5px" />
+        android:layout_below="@id/layout_message_list_content"
+        android:paddingTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_message_list_creator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            android:textColor="#8a000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_message_list_publish_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            android:textColor="#8a000000"
+            android:textSize="10sp" />
+    </LinearLayout>
+
 </RelativeLayout>

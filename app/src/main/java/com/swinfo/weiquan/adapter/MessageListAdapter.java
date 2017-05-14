@@ -63,7 +63,7 @@ public class MessageListAdapter extends BaseAdapter {
         holder.messageImage.setBackgroundResource(R.mipmap.img001);
         holder.messageContent.setText("新编内容新编内容新编内容" + position);
         holder.messageCreator.setText("新编发布者" + position);
-        holder.messageCreateTime.setText("10:10:1" + position);
+        holder.messageCreateTime.setText("发布时间10:10:1" + position);
 
 //            holder.viewBtn.setOnClickListener(new View.OnClickListener() {
 //
