@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.swinfo.weiquan.adapter.MessageListAdapter;
-import com.swinfo.weiquan.message.MessageEditctivity;
+import com.swinfo.weiquan.message.MessageEditActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(context, MessageEditctivity.class);
+                intent.setClass(context, MessageEditActivity.class);
                 context.startActivity(intent);
             }
         });
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_search) {
             return true;
         }
 
@@ -121,21 +121,10 @@ public class MainActivity extends AppCompatActivity
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("a", "消息1");
-        map.put("b", "发布者1");
-        map.put("c", "10:10:10");
         list.add(map);
-
         map = new HashMap<String, Object>();
-        map.put("a", "消息2");
-        map.put("b", "发布者2");
-        map.put("c", "10:10:20");
         list.add(map);
-
         map = new HashMap<String, Object>();
-        map.put("a", "消息3");
-        map.put("b", "发布者3");
-        map.put("c", "10:10:30");
         list.add(map);
         return list;
     }

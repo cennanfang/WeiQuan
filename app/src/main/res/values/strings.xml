@@ -4,6 +4,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
     <string name="message_list_view_image_description">消息图片预览</string>
+    <string name="message_edit_view_hint">请在此输入内容</string>
+
+    <string-array name="spinner_message_type">
+        <item>人找车</item>
+        <item>车找人</item>
+        <item>微打听</item>
+        <item>招聘</item>
+        <item>求职</item>
+    </string-array>
 </resources>
