@@ -1,16 +1,26 @@
 package com.swinfo.weiquan.adapter.render;
 
+import android.content.Context;
 import android.net.Uri;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.swinfo.weiquan.R;
 import com.swinfo.weiquan.adapter.base.AbstractRender;
 import com.swinfo.weiquan.adapter.base.AbstractRenderAdapter;
 import com.swinfo.weiquan.adapter.base.AbstractViewHolder;
+import com.swinfo.weiquan.util.ImageUtils;
 import com.swinfo.weiquan.util.ViewUtils;
+
+import java.io.File;
+
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * Created by redbird on 2017/5/19.
@@ -19,10 +29,12 @@ import com.swinfo.weiquan.util.ViewUtils;
 public class ImagePickerRender extends AbstractRender {
     private ViewHolder mHolder;
     private AbstractRenderAdapter mAdapter;
+    private Context context;
 
     public ImagePickerRender(ViewGroup parent, AbstractRenderAdapter adapter) {
         this.mAdapter = adapter;
-        View v = LayoutInflater.from(parent.getContext())
+        this.context = parent.getContext();
+        View v = LayoutInflater.from(context)
                 .inflate(R.layout.message_edit_add_pic, parent, false);
         this.mHolder = new ViewHolder(v, adapter);
     }
@@ -31,7 +43,8 @@ public class ImagePickerRender extends AbstractRender {
     @Override
     public void bindData(int position) {
         String data = (String) mAdapter.getItem(position);
-        mHolder.mImage.setImageURI(Uri.parse(data));
+        mHolder.mImage.setImageResource(R.mipmap.ic_photo_loading);
+        ImageUtils.compressWithRx(context, mHolder.mImage, data);
     }
 
     @Override
