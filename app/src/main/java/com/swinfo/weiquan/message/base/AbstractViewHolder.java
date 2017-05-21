@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.adapter.base;
+package com.swinfo.weiquan.message.base;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.adapter.base;
+package com.swinfo.weiquan.message.base;
 
 /**
  * Created by redbird on 2017/5/19.
@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.swinfo.weiquan.adapter.render.HeaderOrFooterRender;
+import com.swinfo.weiquan.message.render.HeaderOrFooterRender;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.adapter.render;
+package com.swinfo.weiquan.message.render;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.swinfo.weiquan.R;
-import com.swinfo.weiquan.adapter.base.AbstractRender;
-import com.swinfo.weiquan.adapter.base.AbstractRenderAdapter;
-import com.swinfo.weiquan.adapter.base.AbstractViewHolder;
+import com.swinfo.weiquan.message.base.AbstractRender;
+import com.swinfo.weiquan.message.base.AbstractRenderAdapter;
+import com.swinfo.weiquan.message.base.AbstractViewHolder;
 import com.swinfo.weiquan.util.ImageUtils;
 import com.swinfo.weiquan.util.ViewUtils;
 

@@ -1,9 +1,9 @@
-package com.swinfo.weiquan.adapter.render;
+package com.swinfo.weiquan.message.render;
 
 import android.view.View;
 
-import com.swinfo.weiquan.adapter.base.AbstractRender;
-import com.swinfo.weiquan.adapter.base.AbstractViewHolder;
+import com.swinfo.weiquan.message.base.AbstractRender;
+import com.swinfo.weiquan.message.base.AbstractViewHolder;
 
 /**
  * Created by redbird on 2017/5/19.

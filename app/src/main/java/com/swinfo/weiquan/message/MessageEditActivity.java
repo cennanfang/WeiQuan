@@ -1,6 +1,5 @@
 package com.swinfo.weiquan.message;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +9,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.swinfo.weiquan.R;
-import com.swinfo.weiquan.adapter.ImagePickerListAdapter;
-import com.swinfo.weiquan.adapter.base.AbstractRenderAdapter;
+import com.swinfo.weiquan.message.base.AbstractRenderAdapter;
 import com.swinfo.weiquan.title.CommonTitleBar;
 import com.swinfo.weiquan.user.LoginActivity;
 import com.swinfo.weiquan.util.AppUtils;

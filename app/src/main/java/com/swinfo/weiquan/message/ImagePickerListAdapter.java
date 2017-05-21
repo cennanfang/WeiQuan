@@ -1,12 +1,12 @@
-package com.swinfo.weiquan.adapter;
+package com.swinfo.weiquan.message;
 
 import android.annotation.TargetApi;
 import android.view.ViewGroup;
 
-import com.swinfo.weiquan.adapter.base.AbstractRender;
-import com.swinfo.weiquan.adapter.base.AbstractRenderAdapter;
-import com.swinfo.weiquan.adapter.base.AbstractViewHolder;
-import com.swinfo.weiquan.adapter.render.ImagePickerRender;
+import com.swinfo.weiquan.message.base.AbstractRender;
+import com.swinfo.weiquan.message.base.AbstractRenderAdapter;
+import com.swinfo.weiquan.message.base.AbstractViewHolder;
+import com.swinfo.weiquan.message.render.ImagePickerRender;
 
 import java.util.List;
 

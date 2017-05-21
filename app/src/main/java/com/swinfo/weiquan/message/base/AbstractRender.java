@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.adapter.base;
+package com.swinfo.weiquan.message.base;
 
 /**
  * Created by redbird on 2017/5/19.
