@@ -13,6 +13,7 @@ import android.view.View;
 import com.swinfo.weiquan.R;
 import com.swinfo.weiquan.adapter.ImagePickerListAdapter;
 import com.swinfo.weiquan.adapter.base.AbstractRenderAdapter;
+import com.swinfo.weiquan.util.AppUtils;
 import com.swinfo.weiquan.util.ViewUtils;
 
 import java.util.ArrayList;

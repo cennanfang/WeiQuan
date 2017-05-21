@@ -14,8 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +22,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:configChanges="orientation|screenSize"
-            android:name=".message.MessageEditActivity">
+            android:name=".message.MessageEditActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".message.ItemListActivity"
+            android:label="@string/title_item_list" />
+        <activity
+            android:name=".message.ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".message.ItemListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.swinfo.weiquan.message.ItemListActivity" />
         </activity>
+        <activity
+            android:name=".search.SearchActivity"></activity>
     </application>
+
 </manifest>

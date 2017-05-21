@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#303f9f</color>
-    <color name="colorPrimaryDark">#303f9f</color>
+   <color name="colorPrimary">#258b79</color>
+    <color name="colorPrimaryDark">#258b79</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="color_bg_write">#FFFFFFFF</color>
+
+    <color name="myred">#eb4f38</color>
+    <color name="darkgray">#cccc</color>
+    <color name="color_white">#ffffff</color>
+    <color name="btn_press_color">#256968</color>
+    <color name="btn_pressed_color">@color/colorPrimary</color>
 </resources>

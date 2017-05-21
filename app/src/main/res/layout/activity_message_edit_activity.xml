@@ -7,6 +7,11 @@
     android:background="#c3edecec"
     android:orientation="vertical"
     tools:context="com.swinfo.weiquan.message.MessageEditActivity">
+    <com.swinfo.weiquan.title.CommonTitleBar
+        android:id="@+id/message_edit_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.swinfo.weiquan.title.CommonTitleBar>
 
     <EditText
         android:id="@+id/message_edit_text"

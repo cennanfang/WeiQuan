@@ -1,7 +1,6 @@
 package com.swinfo.weiquan;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -17,6 +16,8 @@ import android.widget.ListView;
 
 import com.swinfo.weiquan.adapter.MessageListAdapter;
 import com.swinfo.weiquan.message.MessageEditActivity;
+import com.swinfo.weiquan.search.SearchActivity;
+import com.swinfo.weiquan.util.AppUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,9 +39,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(context, MessageEditActivity.class);
-                context.startActivity(intent);
+                AppUtils.startActivity(context, MessageEditActivity.class);
             }
         });
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_toolbar_menu, menu);
         return true;
     }
 
@@ -86,6 +85,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
+            AppUtils.startActivity(context, SearchActivity.class);
             return true;
         }
 
