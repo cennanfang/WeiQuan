@@ -26,6 +26,7 @@
         <FrameLayout
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content">
 
             <TextView
@@ -54,7 +55,6 @@
             android:layout_width="44dp"
             android:layout_height="30dp"
             android:textSize="16sp"
-            android:text="发布"
             android:textColor="@color/color_white"/>
     </LinearLayout>
 

@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.swinfo.weiquan.R;
 
@@ -37,6 +36,11 @@ public class CommonTitleBar extends LinearLayout implements View.OnClickListener
      */
     private Context mContext;
 
+    /**
+     * 函数回调
+     */
+    private CommonTitleListener titleListener;
+
 
     public CommonTitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -48,28 +52,60 @@ public class CommonTitleBar extends LinearLayout implements View.OnClickListener
     private void initViews() {
         btnBack = (ImageView) findViewById(R.id.title_btn_back);
         btnDoIt = (TextView) findViewById(R.id.title_btn_do_it);
-        titleName = (TextView) findViewById(R.id.title_btn_do_it);
+        titleName = (TextView) findViewById(R.id.title_name);
 
         btnBack.setOnClickListener(this);
         btnDoIt.setOnClickListener(this);
     }
 
+    /**
+     * 设置标题
+     * @param titleName
+     */
     public void setTitleName(String titleName) {
         this.titleName.setText(titleName);
     }
-    public void setBtnDoItName(String btnDoItName) {
-        this.btnDoIt.setText(btnDoItName);
+
+    /**
+     * 设置标题
+     * @param doItName
+     */
+    public void setDoItName(String doItName) {
+        this.btnDoIt.setText(doItName);
+    }
+    /**
+     * 设置标题
+     * @param doItName
+     */
+    public void setDoItVisibility(int visibility) {
+        this.btnDoIt.setVisibility(visibility);
+    }
+
+
+
+    public void setTitleListener(CommonTitleListener titleListener) {
+        this.titleListener = titleListener;
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.title_btn_do_it:
-                Toast.makeText(mContext, "do id", Toast.LENGTH_LONG).show();
+                titleListener.doIt();
                 break;
             case R.id.title_btn_back:
                 ((Activity) mContext).finish();
                 break;
         }
+    }
+
+
+
+    public interface CommonTitleListener {
+        /**
+         * 实现按钮功能
+         */
+        public void doIt();
+
     }
 }

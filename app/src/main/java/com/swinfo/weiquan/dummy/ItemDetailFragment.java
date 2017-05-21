@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.message;
+package com.swinfo.weiquan.dummy;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.swinfo.weiquan.R;
-import com.swinfo.weiquan.dummy.DummyContent;
 
 /**
  * A fragment representing a single Item detail screen.

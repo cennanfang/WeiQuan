@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.message;
+package com.swinfo.weiquan.dummy;
 
 import android.content.Intent;
 import android.os.Bundle;

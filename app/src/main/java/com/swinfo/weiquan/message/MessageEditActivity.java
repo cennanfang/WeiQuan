@@ -1,5 +1,6 @@
 package com.swinfo.weiquan.message;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +10,15 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.swinfo.weiquan.R;
 import com.swinfo.weiquan.adapter.ImagePickerListAdapter;
 import com.swinfo.weiquan.adapter.base.AbstractRenderAdapter;
+import com.swinfo.weiquan.title.CommonTitleBar;
+import com.swinfo.weiquan.user.LoginActivity;
 import com.swinfo.weiquan.util.AppUtils;
 import com.swinfo.weiquan.util.ViewUtils;
 
@@ -21,10 +27,9 @@ import java.util.List;
 
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
-public class MessageEditActivity extends AppCompatActivity {
+public class MessageEditActivity extends AppCompatActivity implements CommonTitleBar.CommonTitleListener {
     private Context context = MessageEditActivity.this;
     private final int REQUEST_IMAGE = 1;
-    private String TAG = "weiquan";
     private ImagePickerListAdapter mImagePickerAdapter;
     private RecyclerView mImagePickerListView;
     private List<String> mImagePathes = new ArrayList<>();
@@ -34,15 +39,21 @@ public class MessageEditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_edit_activity);
-
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle("编辑消息");
-            actionBar.setHomeButtonEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
+        initTitleBar();
         initImagePicker();
+    }
+
+    private void initTitleBar() {
+        CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.message_edit_title_layout);
+        titleBar.setTitleListener(this);
+        titleBar.setDoItName("发布");
+    }
+
+    /**
+     * 实现按钮功能
+     */
+    public void doIt() {
+        AppUtils.startActivity(context, LoginActivity.class);
     }
 
     /**
@@ -68,7 +79,7 @@ public class MessageEditActivity extends AppCompatActivity {
     /**
      * 显示图片
      */
-    private void replaceImages(){
+    private void replaceImages() {
         mImagePickerAdapter.replace(mImagePathes);
         if (mImagePathes.size() == 9) {
             mImagePickerAdapter.removeFooterView();
@@ -87,13 +98,13 @@ public class MessageEditActivity extends AppCompatActivity {
         mImagePickerAdapter.setOnItemClickListener(new AbstractRenderAdapter.onItemClickListener() {
             @Override
             public void onItemClick(View view, int postion) {
-                Log.d(TAG, "clicked");
+                Log.d("weiquan", "clicked");
             }
         });
 
         //recycler view
         mImagePickerListView = ViewUtils.findViewById(this, R.id.list_image_picker);
-        StaggeredGridLayoutManager linearLayoutManager = new StaggeredGridLayoutManager(5,StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager linearLayoutManager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL);
 
         mImagePickerListView.setLayoutManager(linearLayoutManager);
         mImagePickerListView.setAdapter(mImagePickerAdapter);

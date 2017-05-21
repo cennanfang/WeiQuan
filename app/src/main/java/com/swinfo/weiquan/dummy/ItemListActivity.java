@@ -1,4 +1,4 @@
-package com.swinfo.weiquan.message;
+package com.swinfo.weiquan.dummy;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 
 import com.swinfo.weiquan.R;
-import com.swinfo.weiquan.dummy.DummyContent;
 
 import java.util.List;
 

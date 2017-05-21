@@ -14,7 +14,7 @@ import com.swinfo.weiquan.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements SearchView.SearchViewListener  {
+public class SearchActivity extends AppCompatActivity implements SearchView.SearchViewListener {
 
     private Context context = SearchActivity.this;
 
@@ -194,6 +194,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.Sear
 
     /**
      * 当搜索框 文本改变时 触发的回调 ,更新自动补全数据
+     *
      * @param text
      */
     @Override
