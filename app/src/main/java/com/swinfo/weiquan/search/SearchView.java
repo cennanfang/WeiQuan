@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.swinfo.weiquan.R;
 
@@ -132,12 +131,14 @@ public class SearchView extends LinearLayout implements View.OnClickListener {
      * @param text
      */
     private void notifyStartSearching(String text){
+        btnDoSearch.setClickable(false);
         if (mListener != null) {
             mListener.onSearch(etInput.getText().toString());
         }
         //隐藏软键盘
         InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        btnDoSearch.setClickable(true);
     }
 
     /**
@@ -197,7 +198,7 @@ public class SearchView extends LinearLayout implements View.OnClickListener {
                 lvTips.setVisibility(VISIBLE);
                 break;
             case R.id.search_btn_do_search:
-                Toast.makeText(mContext, "开始收索", Toast.LENGTH_LONG).show();
+                notifyStartSearching("没有输入！");
                 break;
             case R.id.search_iv_delete:
                 etInput.setText("");

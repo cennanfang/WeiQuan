@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">微服</string>
+    <string name="app_name">说吧</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -17,8 +17,6 @@
         <item>招聘</item>
         <item>求职</item>
     </string-array>
-    <string name="title_item_list">Items</string>
-    <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->

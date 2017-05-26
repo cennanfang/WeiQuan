@@ -29,17 +29,6 @@
         <activity
             android:name=".message.MessageEditActivity"
             android:configChanges="orientation|screenSize" />
-        <activity
-            android:name=".dummy.ItemListActivity"
-            android:label="@string/title_item_list" />
-        <activity
-            android:name=".dummy.ItemDetailActivity"
-            android:label="@string/title_item_detail"
-            android:parentActivityName=".dummy.ItemListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.swinfo.weiquan.dummy.ItemListActivity" />
-        </activity>
         <activity android:name=".search.SearchActivity" />
         <activity
             android:name=".user.LoginActivity"

@@ -12,21 +12,26 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.swinfo.weiquan.adapter.MessageListAdapter;
+import com.jingchen.pulltorefresh.PullToRefreshLayout;
 import com.swinfo.weiquan.message.MessageEditActivity;
 import com.swinfo.weiquan.search.SearchActivity;
+import com.swinfo.weiquan.mian.MainListAdapter;
+import com.swinfo.weiquan.mian.MainPullListener;
 import com.swinfo.weiquan.util.AppUtils;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private Context context = MainActivity.this;
+    private ListView listView;
+    private PullToRefreshLayout ptrl;
+    private boolean isFirstIn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +58,10 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         //显示列表数据
-        ListView dataContent = (ListView) findViewById(R.id.list_view_data_content);
-        List<Map<String, Object>> listMessage = getData();
-        MessageListAdapter adapter = new MessageListAdapter(context, listMessage);
-        dataContent.setAdapter(adapter);
+        ptrl = ((PullToRefreshLayout) findViewById(R.id.refresh_view));
+        ptrl.setOnPullListener(new MainPullListener());
+        listView = (ListView) ptrl.getPullableView();
+        initListView();
     }
 
     @Override
@@ -117,15 +122,50 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public List<Map<String, Object>> getData() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-
-        Map<String, Object> map = new HashMap<String, Object>();
-        list.add(map);
-        map = new HashMap<String, Object>();
-        list.add(map);
-        map = new HashMap<String, Object>();
-        list.add(map);
-        return list;
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        // 第一次进入自动刷新
+        if (isFirstIn) {
+            ptrl.autoRefresh();
+            isFirstIn = false;
+        }
     }
+
+    /**
+     * ListView初始化方法
+     */
+    private void initListView() {
+        List<String> items = new ArrayList<String>();
+        for (int i = 0; i < 30; i++) {
+            items.add("这里是item " + i);
+        }
+        MainListAdapter adapter = new MainListAdapter(this, items);
+        listView.setAdapter(adapter);
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                Toast.makeText(
+                        context,
+                        "LongClick on "
+                                + parent.getAdapter().getItemId(position),
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(context,
+                        " Click on " + parent.getAdapter().getItemId(position),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 }

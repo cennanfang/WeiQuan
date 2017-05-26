@@ -210,6 +210,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.Sear
      */
     @Override
     public void onSearch(String text) {
+        Toast.makeText(context, "开始收索:"  + text, Toast.LENGTH_LONG).show();
         //更新result数据
         getResultData(text);
         lvResults.setVisibility(View.VISIBLE);
