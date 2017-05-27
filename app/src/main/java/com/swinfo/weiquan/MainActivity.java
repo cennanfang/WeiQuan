@@ -9,14 +9,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.location.AMapLocation;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
+import com.swinfo.weiquan.location.LocationManager;
 import com.swinfo.weiquan.message.MessageEditActivity;
 import com.swinfo.weiquan.search.SearchActivity;
 import com.swinfo.weiquan.mian.MainListAdapter;
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity
         ptrl.setOnPullListener(new MainPullListener());
         listView = (ListView) ptrl.getPullableView();
         initListView();
+
     }
 
     @Override
@@ -128,6 +133,27 @@ public class MainActivity extends AppCompatActivity
         // 第一次进入自动刷新
         if (isFirstIn) {
             ptrl.autoRefresh();
+            LocationManager locationManager = new LocationManager(context);
+            locationManager.locate(new LocationManager.OnLocateResultListener() {
+                @Override
+                public void onLocateResult(AMapLocation amapLocation) {
+                    if (amapLocation != null) {
+                        if (amapLocation.getErrorCode() == 0) {
+                            //可在其中解析amapLocation获取相应内容。
+                            // 定位
+                            TextView tvLocation = (TextView)findViewById(R.id.tv_main_location);
+                            tvLocation.setText(amapLocation.getDistrict());
+                            //Toast.makeText(context, "type:" + amapLocation.getLocationType()
+                            //        + " " + amapLocation.getDistrict(),Toast.LENGTH_LONG).show();
+                        } else {
+                            //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                            Log.e("AmapError", "location Error, ErrCode:"
+                                    + amapLocation.getErrorCode() + ", errInfo:"
+                                    + amapLocation.getErrorInfo());
+                        }
+                    }
+                }
+            });
             isFirstIn = false;
         }
     }
