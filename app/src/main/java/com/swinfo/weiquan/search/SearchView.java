@@ -84,7 +84,7 @@ public class SearchView extends LinearLayout implements View.OnClickListener {
     public SearchView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.search_layout, this);
+        LayoutInflater.from(context).inflate(R.layout.search_title_layout, this);
         initViews();
     }
 

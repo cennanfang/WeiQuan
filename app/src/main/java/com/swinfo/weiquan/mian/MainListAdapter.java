@@ -43,7 +43,7 @@ public class MainListAdapter extends BaseAdapter {
 		ViewHolder holder = null;
 		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = mInflater.inflate(R.layout.layout_message_list, null);
+			convertView = mInflater.inflate(R.layout.message_list_layout, null);
 			holder.messageContent = (TextView) convertView.findViewById(R.id.tv_message_list_content);
 			holder.messageCreator = (TextView) convertView.findViewById(R.id.tv_message_list_creator);
 			holder.messageCreateTime = (TextView) convertView.findViewById(R.id.tv_message_list_publish_time);

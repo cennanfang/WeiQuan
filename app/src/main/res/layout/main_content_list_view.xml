@@ -7,7 +7,7 @@
     android:layout_height="fill_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.swinfo.weiquan.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/main_app_bar">
 
     <com.jingchen.pulltorefresh.PullableListView
         android:layout_width="match_parent"
@@ -16,6 +16,6 @@
         android:dividerHeight="1px"
         android:scrollbars="none"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp"/>
+        android:paddingRight="16dp" />
 
 </com.jingchen.pulltorefresh.PullToRefreshLayout>

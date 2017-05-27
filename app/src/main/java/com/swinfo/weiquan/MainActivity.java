@@ -9,19 +9,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.amap.api.location.AMapLocation;
 import com.jingchen.pulltorefresh.PullToRefreshLayout;
 import com.swinfo.weiquan.location.LocationManager;
 import com.swinfo.weiquan.message.MessageEditActivity;
+import com.swinfo.weiquan.mian.MainOnListViewItemClickListener;
+import com.swinfo.weiquan.mian.MainOnLocateResultListener;
+import com.swinfo.weiquan.mian.MainOnNavigationItemSelectedListener;
 import com.swinfo.weiquan.search.SearchActivity;
 import com.swinfo.weiquan.mian.MainListAdapter;
 import com.swinfo.weiquan.mian.MainPullListener;
@@ -30,8 +29,9 @@ import com.swinfo.weiquan.util.AppUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import cn.sharesdk.framework.ShareSDK;
+
+public class MainActivity extends AppCompatActivity {
     private Context context = MainActivity.this;
     private ListView listView;
     private PullToRefreshLayout ptrl;
@@ -58,15 +58,15 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        //左边导航
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(new MainOnNavigationItemSelectedListener((DrawerLayout) findViewById(R.id.drawer_layout)));
 
         //显示列表数据
         ptrl = ((PullToRefreshLayout) findViewById(R.id.refresh_view));
         ptrl.setOnPullListener(new MainPullListener());
         listView = (ListView) ptrl.getPullableView();
         initListView();
-
     }
 
     @Override
@@ -102,58 +102,16 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         // 第一次进入自动刷新
         if (isFirstIn) {
+            // 刷新数据
             ptrl.autoRefresh();
-            LocationManager locationManager = new LocationManager(context);
-            locationManager.locate(new LocationManager.OnLocateResultListener() {
-                @Override
-                public void onLocateResult(AMapLocation amapLocation) {
-                    if (amapLocation != null) {
-                        if (amapLocation.getErrorCode() == 0) {
-                            //可在其中解析amapLocation获取相应内容。
-                            // 定位
-                            TextView tvLocation = (TextView)findViewById(R.id.tv_main_location);
-                            tvLocation.setText(amapLocation.getDistrict());
-                            //Toast.makeText(context, "type:" + amapLocation.getLocationType()
-                            //        + " " + amapLocation.getDistrict(),Toast.LENGTH_LONG).show();
-                        } else {
-                            //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-                            Log.e("AmapError", "location Error, ErrCode:"
-                                    + amapLocation.getErrorCode() + ", errInfo:"
-                                    + amapLocation.getErrorInfo());
-                        }
-                    }
-                }
-            });
+            // 获取位置信息
+            new LocationManager(context).locate(new MainOnLocateResultListener((TextView) findViewById(R.id.tv_main_location)));
             isFirstIn = false;
         }
     }
@@ -168,29 +126,9 @@ public class MainActivity extends AppCompatActivity
         }
         MainListAdapter adapter = new MainListAdapter(this, items);
         listView.setAdapter(adapter);
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,
-                                           int position, long id) {
-                Toast.makeText(
-                        context,
-                        "LongClick on "
-                                + parent.getAdapter().getItemId(position),
-                        Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(context,
-                        " Click on " + parent.getAdapter().getItemId(position),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        MainOnListViewItemClickListener mainListViewOnItemClickListener = new MainOnListViewItemClickListener(context);
+        listView.setOnItemLongClickListener(mainListViewOnItemClickListener);
+        listView.setOnItemClickListener(mainListViewOnItemClickListener);
     }
 
 

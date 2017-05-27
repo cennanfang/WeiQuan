@@ -33,7 +33,7 @@ public class MessageEditActivity extends AppCompatActivity implements CommonTitl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_edit_activity);
+        setContentView(R.layout.activity_message_edit);
         initTitleBar();
         initImagePicker();
     }
@@ -47,6 +47,7 @@ public class MessageEditActivity extends AppCompatActivity implements CommonTitl
     /**
      * 实现按钮功能
      */
+    @Override
     public void doIt() {
         AppUtils.startActivity(context, LoginActivity.class);
     }

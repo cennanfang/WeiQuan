@@ -186,7 +186,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.Sear
             }
         }
         if (resultAdapter == null) {
-            resultAdapter = new SearchAdapter(this, resultData, R.layout.item_bean_list);
+            resultAdapter = new SearchAdapter(this, resultData, R.layout.search_item_bean_list);
         } else {
             resultAdapter.notifyDataSetChanged();
         }

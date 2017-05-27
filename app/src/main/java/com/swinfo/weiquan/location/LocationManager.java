@@ -105,6 +105,6 @@ public class LocationManager {
      * 定位结果回调
      */
     public interface OnLocateResultListener{
-        public void onLocateResult(AMapLocation amapLocation);
+        void onLocateResult(AMapLocation amapLocation);
     }
 }
